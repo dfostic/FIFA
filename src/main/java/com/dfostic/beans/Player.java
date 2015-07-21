@@ -7,7 +7,7 @@ package com.dfostic.beans;
 
 import java.util.Currency;
 
-
+/* NEED TO CLEAN THIS SHIT*/
 
 public class Player {
     
