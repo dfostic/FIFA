@@ -7,6 +7,8 @@ package com.dfostic.beans;
 
 import java.util.Currency;
 
+
+
 public class Player {
     
     public enum Position {
