@@ -6,8 +6,9 @@ package com.dfostic.beans;
  */
 
 import java.util.Currency;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class Player {
     
     public enum Position {
@@ -19,22 +20,21 @@ public class Player {
     private int age;
     private String country;
     private Position position;
-    private double salary;                                                      /*  ? What about currency ? */
-    private int goals;
-    private int booking;
-    
-    
+    private double salary;                                                      
+    private Statistics statistics;
+    private Currency currency;
+
+    public Player() {
+    }    
 
     public Player(String firstName, String lastName, int age, String country, 
-            Position position, double salary, int goals, int booking) {
+            Position position, double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.country = country;
         this.position = position;
         this.salary = salary;
-        this.goals = goals;
-        this.booking = booking;
     }
 
     public String getFirstName() {
@@ -85,20 +85,20 @@ public class Player {
         this.salary = salary;
     }
 
-    public int getGoals() {
-        return goals;
+    public Statistics getStatistics() {
+        return statistics;
     }
 
-    public void setGoals(int goals) {
-        this.goals = goals;
+    public void setStatistics(Statistics statistics) {
+        this.statistics = statistics;
+    }   
+
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public int getBooking() {
-        return booking;
-    }
-
-    public void setBooking(int booking) {
-        this.booking = booking;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
        
     

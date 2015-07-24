@@ -4,17 +4,85 @@ package com.dfostic.beans;
  *
  * @author DFostic1
  */
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Currency;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class Trainer {
     
     private String firstName;
     private String lastName;
-    private int age;
+    private LocalDate dateOfBirth;
     
     private ArrayList<Team> previousTeams;
     private double salary;
+    private Currency currency;
+
+    public Trainer() {
+    }
+
+    public Trainer(String firstName, String lastName, LocalDate dateOfBirth, ArrayList<Team> previousTeams, double salary, Currency currency) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.previousTeams = previousTeams;
+        this.salary = salary;
+        this.currency = currency;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        LocalDate now = LocalDate.now();
+        Period period = Period.between(dateOfBirth, now);        
+        return period.getYears();
+    }
+
+    public void setAge(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public ArrayList<Team> getPreviousTeams() {
+        return previousTeams;
+    }
+
+    public void setPreviousTeams(ArrayList<Team> previousTeams) {
+        this.previousTeams = previousTeams;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+    
+    
     
 }
