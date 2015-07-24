@@ -31,7 +31,7 @@ public class TrainerFactory {
             trainer = new Trainer("Luis", "Enrique", LocalDate.of(1970, Month.MAY, 8), null, 3400000, Currency.getInstance(Locale.US));
         } else if (clubName.equals("Chelsea")) {
             trainer = new Trainer("Jose", "Mourinho", LocalDate.of(1963, Month.JANUARY, 26), null, 13200000, Currency.getInstance(Locale.ENGLISH));
-        } else if (clubName.equals("MFC")) {
+        } else if (clubName.equals("Los Blancos")) {
             trainer = new Trainer("Rafael", "Benitez", LocalDate.of(1960, Month.APRIL, 16), null, 3500000, Currency.getInstance(Locale.FRENCH));
         } else {
             trainer = new Trainer();

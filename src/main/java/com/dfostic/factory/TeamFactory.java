@@ -29,10 +29,10 @@ public class TeamFactory {
             team = new Team(teamName, 1970, trainerFactory.getTrainer(teamName));
         } else if (teamName.equals("FCB")) {
             team = new Team(teamName, 1899, trainerFactory.getTrainer(teamName));
-        } else if (teamName.equals("The Whites")) {
-            team = new Team(teamName, 1902, trainerFactory.getTrainer(teamName));
         } else if (teamName.equals("Chelsea")) {
             team = new Team(teamName, 1905, trainerFactory.getTrainer(teamName));
+        } else if (teamName.equals("Los Blancos")) {
+            team = new Team(teamName, 1902, trainerFactory.getTrainer(teamName));
         } else {
             team = new Team();
         }
