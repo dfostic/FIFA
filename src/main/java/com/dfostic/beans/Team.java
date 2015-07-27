@@ -1,28 +1,28 @@
 package com.dfostic.beans;
 
+import com.dfostic.interfaces.ITeam;
 import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 
 /**
- * @author DFostic1
+ * @author dfostic
  */
+public class Team implements ITeam {
 
-@Component
-public class Team {
-    
     private String name;
     private int foundationYear;
-    
-    private ArrayList<Player> playerList;
+
     private Trainer trainer;
+    private ArrayList<Player> playerList;
 
     public Team() {
     }
 
-    public Team(String name, int foundationYear, Trainer trainer) {
+    public Team(String name, int foundationYear, Trainer trainer, ArrayList<Player> playerList) {
         this.name = name;
         this.foundationYear = foundationYear;
         this.trainer = trainer;
+        this.playerList = playerList;
     }
 
     public String getName() {
@@ -56,7 +56,5 @@ public class Team {
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
-    
-    
-    
+
 }

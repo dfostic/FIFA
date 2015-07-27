@@ -1,5 +1,6 @@
 package com.dfostic.beans;
 
+import com.dfostic.interfaces.IStatistics;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class Statistics {
+public class Statistics implements IStatistics{
     
     private int goals;
     private int bookings;

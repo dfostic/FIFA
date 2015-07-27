@@ -1,30 +1,29 @@
 package com.dfostic.beans;
 
 /**
- *
- * @author DFostic1
+ * @author dfostic
  */
+import com.dfostic.interfaces.ITrainer;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Currency;
-import org.springframework.stereotype.Component;
 
-@Component
-public class Trainer {
-    
+public class Trainer implements ITrainer {
+
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    
+
     private ArrayList<Team> previousTeams;
-    private double salary;
+    private BigDecimal salary;
     private Currency currency;
 
     public Trainer() {
     }
 
-    public Trainer(String firstName, String lastName, LocalDate dateOfBirth, ArrayList<Team> previousTeams, double salary, Currency currency) {
+    public Trainer(String firstName, String lastName, LocalDate dateOfBirth, ArrayList<Team> previousTeams, BigDecimal salary, Currency currency) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -51,11 +50,11 @@ public class Trainer {
 
     public int getAge() {
         LocalDate now = LocalDate.now();
-        Period period = Period.between(dateOfBirth, now);        
+        Period period = Period.between(dateOfBirth, now);
         return period.getYears();
     }
 
-    public void setAge(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -67,11 +66,11 @@ public class Trainer {
         this.previousTeams = previousTeams;
     }
 
-    public double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
@@ -82,7 +81,5 @@ public class Trainer {
     public void setCurrency(Currency currency) {
         this.currency = currency;
     }
-    
-    
-    
+
 }

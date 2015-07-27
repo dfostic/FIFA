@@ -1,36 +1,31 @@
 package com.dfostic.beans;
 
 /**
- *
- * @author DFostic1
+ * @author dfostic
  */
+
+import com.dfostic.interfaces.IPlayer;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Currency;
 import java.util.Locale;
-import org.springframework.stereotype.Component;
 
-@Component
-public class Player {
-
-    public enum Position {
-
-        GOALKEEPER, DEFENDER, MIDFIELDER, FORWARD
-    }
+public class Player implements IPlayer {
 
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private int age;
     private Locale country;
     private Position position;
-    private double salary;
+    private BigDecimal salary;
     private Statistics statistics;
     private Currency currency;
 
     public Player() {
     }
 
-    public Player(String firstName, String lastName, LocalDate dateOfBirth, Locale country, Position position, double salary, Statistics statistics) {
+    public Player(String firstName, String lastName, LocalDate dateOfBirth, Locale country, Position position, BigDecimal salary, Statistics statistics, Currency currency) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -38,6 +33,7 @@ public class Player {
         this.position = position;
         this.salary = salary;
         this.statistics = statistics;
+        this.currency = currency;
     }
 
     public String getFirstName() {
@@ -62,14 +58,12 @@ public class Player {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }   
-
-    public int getAge() {
-        return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public int getAge() {
+        LocalDate now = LocalDate.now();
+        Period period = Period.between(dateOfBirth, now);
+        return period.getYears();
     }
 
     public Locale getCountry() {
@@ -88,11 +82,11 @@ public class Player {
         this.position = position;
     }
 
-    public double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
