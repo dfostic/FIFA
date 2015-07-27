@@ -51,6 +51,18 @@ public class PlayerFactory {
         }
     }
 
+    /**
+     * Generates player with:
+     *  - random string first name and last name
+     *  - random age between 20 and 23 years
+     *  - random salary up to 50M/year (Lionel Messi had 48M in 2015 :))
+     *  - random statistics
+     *  - default currency
+     *  - default country
+     * @param position
+     * @return
+     * @throws Exception 
+     */
     public Player generateRandomPlayer(IPlayer.Position position) throws Exception {
         Player player = new Player();
         player.setFirstName(RandomStringUtils.randomAlphabetic(8));
@@ -79,6 +91,11 @@ public class PlayerFactory {
         }
     }
     
+    /**
+     * Generates Statistics with random goalsSocred and bookings between 0 and 10
+     * @return
+     * @throws Exception 
+     */
     public Statistics generateRandomStatistics() throws Exception {
         Statistics statistics = new Statistics();
         
