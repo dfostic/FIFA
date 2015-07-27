@@ -60,11 +60,11 @@ public class TrainerFactory {
         
         LocalDate now = LocalDate.now();
         Random randomInt = new Random();
-        int randomYearOfBirth = randomInt.nextInt(100 - 40) + 40;
+        int randomYearOfBirth = randomInt.nextInt(40) + 40;
         LocalDate dateOfBirth = LocalDate.of(now.getYear() - randomYearOfBirth, now.getMonth(), now.getDayOfMonth());
         trainer.setDateOfBirth(dateOfBirth);
         
-        int randomSalary = randomInt.nextInt(10000000 - 1000000) + 1000000;
+        int randomSalary = randomInt.nextInt(10000000);
         trainer.setSalary(new BigDecimal(randomSalary));
         trainer.setCurrency(defaultCurrency);
         

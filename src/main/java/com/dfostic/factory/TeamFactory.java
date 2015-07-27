@@ -21,6 +21,7 @@ public class TeamFactory {
 
     private static final int minFoundationYear = 1950;
 
+    /* To BE FINISHED LATER- made for fun*/
     private static final Team PSG = new Team("PSG", 1970, TrainerFactory.LaurentBlanc, null);
     private static final Team FCB = new Team("FCB", 1899, TrainerFactory.LuisEnrique, null);
     private static final Team CHELSEA = new Team("Chelsea", 1905, TrainerFactory.JoseMourinho, null);

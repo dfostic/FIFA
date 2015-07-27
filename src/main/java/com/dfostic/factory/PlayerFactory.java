@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Currency;
 import java.util.Locale;
-import java.security.SecureRandom;
 import java.util.Random;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.stereotype.Component;
@@ -66,7 +65,7 @@ public class PlayerFactory {
         player.setCountry(Locale.CANADA_FRENCH);
         player.setPosition(position);
         
-        int randomSalary = randomInt.nextInt(10000000 - 1000000) + 1000000;
+        int randomSalary = randomInt.nextInt(50000000);
         player.setSalary(new BigDecimal(randomSalary));
         player.setStatistics(this.generateRandomStatistics());
         player.setCurrency(defaultCurrency);
