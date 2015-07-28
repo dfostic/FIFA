@@ -29,7 +29,7 @@ public class TeamFactory {
 
     public Team createTeam(String name, int foundationYear, Trainer trainer, ArrayList<Player> playerList) throws Exception {
         if (playerList == null) {
-            playerList = new ArrayList<Player>();
+            playerList = new ArrayList<Player>(22);
         }
 
         Team team = new Team(name, foundationYear, trainer, playerList);
@@ -67,7 +67,7 @@ public class TeamFactory {
     }
 
     public ArrayList<Player> generateRandomPlayerList() throws Exception {
-        ArrayList<Player> playerList = new ArrayList<Player>();
+        ArrayList<Player> playerList = new ArrayList<Player>(22);
 
         for (int x = 0; x < 2; x++) {
             playerList.add(playerFactory.generateRandomPlayer(IPlayer.Position.GOALKEEPER));
