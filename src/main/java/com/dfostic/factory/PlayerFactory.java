@@ -55,7 +55,7 @@ public class PlayerFactory {
      * Generates player with:
      *  - random string first name and last name
      *  - random age between 20 and 23 years
-     *  - random salary up to 50M/year (Lionel Messi had 48M in 2015 :))
+     *  - random salary up to 50M/year (Lionel Messi had 64.7M in 2014 :))
      *  - random statistics
      *  - default currency
      *  - default country
