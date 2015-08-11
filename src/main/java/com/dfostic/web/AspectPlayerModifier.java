@@ -11,5 +11,5 @@ import org.aspectj.lang.annotation.DeclareParents;
 public class AspectPlayerModifier {
 
     @DeclareParents(value = "com.dfostic.beans.IPlayer+", defaultImpl = PlayerModifierImpl.class)
-    public static AspectPlayerModifier playerModifier;
+    public static PlayerModifier playerModifier;
 }

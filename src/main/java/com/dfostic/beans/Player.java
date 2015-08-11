@@ -65,21 +65,6 @@ public class Player implements IPlayer {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    
-//    /**
-//     * Be careful, this one works only in Java 8 !!!
-//     * @param dateOfBirth 
-//     */
-//    public void setDateOfBirth(String dateOfBirth) {
-//        
-////        this.dateOfBirth = LocalDate.parse(dateOfBirth);
-//        
-////        this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("MMM d yyyy").withLocale(Locale.ENGLISH));
-//        
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-//        this.dateOfBirth = LocalDate.parse(dateOfBirth, formatter);
-//        
-//    }
 
     public int getAge() {
         LocalDate now = LocalDate.now();

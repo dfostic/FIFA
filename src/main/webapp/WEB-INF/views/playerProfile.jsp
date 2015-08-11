@@ -24,7 +24,7 @@
                 Country(*): <c:out value="${player.country}" /><br><br>
                 Position(*): <c:out value="${player.position}" /><br><br>
                 Annual salary(*): <c:out value="${player.salary}" /><br><br>
-                Stats(*): <c:out value="${player.statistics.goals} goals"/>&nbsp;&nbsp;
+                Stats(*): <c:out value="${player.statistics.goals} goals"/>&nbsp;&nbsp;&nbsp;&nbsp;
                            <c:out value="${player.statistics.bookings}"/> <br><br>
                            
                 <!--<button type="button" onclick="/">Return</button>-->
