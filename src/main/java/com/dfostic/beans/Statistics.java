@@ -18,25 +18,25 @@ public class Statistics implements IStatistics{
         this.bookings = 0;
     }    
 
-    public Statistics(int goalsScored, int bookingsNo) {
-        this.goals = goalsScored;
-        this.bookings = bookingsNo;
+    public Statistics(int goals, int bookings) {
+        this.goals = goals;
+        this.bookings = bookings;
     }   
 
-    public int getGoalsScored() {
+    public int getGoals() {
         return goals;
     }
 
-    public void setGoalsScored(int goalsScored) {
-        this.goals = goalsScored;
+    public void setGoals(int goals) {
+        this.goals = goals;
     }
 
-    public int getBookingsNo() {
+    public int getBookings() {
         return bookings;
     }
 
-    public void setBookingsNo(int bookingsNo) {
-        this.bookings = bookingsNo;
+    public void setBookings(int bookings) {
+        this.bookings = bookings;
     }
     
     

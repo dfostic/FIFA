@@ -5,6 +5,7 @@ import com.dfostic.beans.Team;
 import com.dfostic.beans.Trainer;
 import com.dfostic.config.FifaConfig;
 import com.dfostic.interfaces.IPlayer;
+import com.dfostic.util.Position;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -126,7 +127,7 @@ public class TeamFactoryTest {
     @Test 
     public void createTeamInvalidPlayerNoMore() throws Exception {
         ArrayList<Player> playerList = teamFactory.generateRandomPlayerList();
-        playerList.add(playerFactory.generateRandomPlayer(IPlayer.Position.DEFENDER));
+        playerList.add(playerFactory.generateRandomPlayer(Position.DEFENDER));
         
         String message = null;
         String expected = String.format("Team players No '%s' is not valid: A team must have 22 players", playerList.size());

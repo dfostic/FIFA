@@ -27,7 +27,10 @@
                 Stats(*): <c:out value="${player.statistics.goals} goals"/>&nbsp;&nbsp;
                            <c:out value="${player.statistics.bookings}"/> <br><br>
                            
-                <button type="button" onclick="/">Return</button>
+                <!--<button type="button" onclick="/">Return</button>-->
+                
+                <button onclick="window.location = '/';
+                        return false;">Return</button>
             </fieldset>
         </form>
     </body>

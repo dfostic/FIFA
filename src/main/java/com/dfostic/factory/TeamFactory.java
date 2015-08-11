@@ -3,7 +3,7 @@ package com.dfostic.factory;
 import com.dfostic.beans.Player;
 import com.dfostic.beans.Team;
 import com.dfostic.beans.Trainer;
-import com.dfostic.interfaces.IPlayer;
+import com.dfostic.util.Position;
 import java.util.ArrayList;
 import java.util.Random;
 import org.apache.commons.lang.RandomStringUtils;
@@ -70,19 +70,19 @@ public class TeamFactory {
         ArrayList<Player> playerList = new ArrayList<Player>(22);
 
         for (int x = 0; x < 2; x++) {
-            playerList.add(playerFactory.generateRandomPlayer(IPlayer.Position.GOALKEEPER));
+            playerList.add(playerFactory.generateRandomPlayer(Position.GOALKEEPER));
         }
 
         for (int x = 0; x < 8; x++) {
-            playerList.add(playerFactory.generateRandomPlayer(IPlayer.Position.DEFENDER));
+            playerList.add(playerFactory.generateRandomPlayer(Position.DEFENDER));
         }
 
         for (int x = 0; x < 6; x++) {
-            playerList.add(playerFactory.generateRandomPlayer(IPlayer.Position.MIDFIELDER));
+            playerList.add(playerFactory.generateRandomPlayer(Position.MIDFIELDER));
         }
 
         for (int x = 0; x < 6; x++) {
-            playerList.add(playerFactory.generateRandomPlayer(IPlayer.Position.FORWARD));
+            playerList.add(playerFactory.generateRandomPlayer(Position.FORWARD));
         }
         return playerList;
     }

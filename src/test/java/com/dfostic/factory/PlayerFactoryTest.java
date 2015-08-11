@@ -4,6 +4,7 @@ import com.dfostic.interfaces.IPlayer;
 import com.dfostic.beans.Player;
 import com.dfostic.beans.Statistics;
 import com.dfostic.config.FifaConfig;
+import com.dfostic.util.Position;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
@@ -25,7 +26,7 @@ public class PlayerFactoryTest {
 
     private static LocalDate validDateOfBirth;
     private static final BigDecimal validSalary = new BigDecimal("1000000");
-    private static final IPlayer.Position validPosition = IPlayer.Position.DEFENDER;
+    private static final Position validPosition = Position.DEFENDER;
     private static final Statistics validStats = new Statistics(5, 5);
     private static final Currency validCurrency = Currency.getInstance(Locale.CANADA);
 
@@ -156,7 +157,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void CreatePlayerNullPosition() {
-        IPlayer.Position position = null;
+        Position position = null;
         String message = null;
 
         try {
@@ -189,7 +190,7 @@ public class PlayerFactoryTest {
     public void CreatePlayerNegativeGoalsNo() {
         Statistics statistics = new Statistics(-1, 0);
         String message = null;
-        String expected = String.format("Statistics goalsScored '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getGoalsScored());
+        String expected = String.format("Statistics goalsScored '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getGoals());
 
         try {
             Player player = playerFactory.createPlayer("First", "Last", validDateOfBirth, Locale.CANADA, validPosition, validSalary, statistics, validCurrency);
@@ -205,7 +206,7 @@ public class PlayerFactoryTest {
     public void CreatePlayerNegativeBookings() {
         Statistics statistics = new Statistics(0, -1);
         String message = null;
-        String expected = String.format("Statistics bookings '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getBookingsNo());
+        String expected = String.format("Statistics bookings '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getBookings());
 
         try {
             Player player = playerFactory.createPlayer("First", "Last", validDateOfBirth, Locale.CANADA, validPosition, validSalary, statistics, validCurrency);

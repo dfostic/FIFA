@@ -1,8 +1,8 @@
 package com.dfostic.factory;
 
-import com.dfostic.interfaces.IPlayer;
 import com.dfostic.beans.Player;
 import com.dfostic.beans.Statistics;
+import com.dfostic.util.Position;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,9 +20,9 @@ public class PlayerFactory {
 
     private final Currency defaultCurrency = Currency.getInstance(Locale.US);
 
-    public static final Player NicolasDouchez = new Player("Nicolas", "Douchez", LocalDate.of(1980, Month.APRIL, 22), Locale.FRANCE, Player.Position.GOALKEEPER, new BigDecimal("1440000"), new Statistics(), Currency.getInstance(Locale.FRANCE));
-    public static final Player ThiagoSilva = new Player("Thiago", "Silva", LocalDate.of(1984, Month.SEPTEMBER, 22), new Locale("pt_BR", "Brazil"), Player.Position.DEFENDER, new BigDecimal("12000000"), new Statistics(4, 1), Currency.getInstance(Locale.FRANCE));
-    public static final Player BenjaminStambouli = new Player("Benjamin", "Stambouli", LocalDate.of(1990, Month.AUGUST, 13), Locale.FRANCE, Player.Position.MIDFIELDER, new BigDecimal("1711667"), new Statistics(5, 2), Currency.getInstance(Locale.FRANCE));
+    public static final Player NicolasDouchez = new Player("Nicolas", "Douchez", LocalDate.of(1980, Month.APRIL, 22), Locale.FRANCE, Position.GOALKEEPER, new BigDecimal("1440000"), new Statistics(), Currency.getInstance(Locale.FRANCE));
+    public static final Player ThiagoSilva = new Player("Thiago", "Silva", LocalDate.of(1984, Month.SEPTEMBER, 22), new Locale("pt_BR", "Brazil"), Position.DEFENDER, new BigDecimal("12000000"), new Statistics(4, 1), Currency.getInstance(Locale.FRANCE));
+    public static final Player BenjaminStambouli = new Player("Benjamin", "Stambouli", LocalDate.of(1990, Month.AUGUST, 13), Locale.FRANCE, Position.MIDFIELDER, new BigDecimal("1711667"), new Statistics(5, 2), Currency.getInstance(Locale.FRANCE));
 
     public PlayerFactory() {
 
@@ -32,7 +32,7 @@ public class PlayerFactory {
         return this.defaultCurrency;
     }
 
-    public Player createPlayer(String firstName, String lastName, LocalDate dateOfBirth, Locale country, IPlayer.Position position, BigDecimal salary, Statistics statistics, Currency currency) throws Exception {
+    public Player createPlayer(String firstName, String lastName, LocalDate dateOfBirth, Locale country, Position position, BigDecimal salary, Statistics statistics, Currency currency) throws Exception {
         if (statistics == null) {
             statistics = this.createStatistics(0, 0);
         }
@@ -52,18 +52,16 @@ public class PlayerFactory {
     }
 
     /**
-     * Generates player with:
-     *  - random string first name and last name
-     *  - random age between 20 and 23 years
-     *  - random salary up to 50M/year (Lionel Messi had 64.7M in 2014 :))
-     *  - random statistics
-     *  - default currency
-     *  - default country
+     * Generates player with: - random string first name and last name - random
+     * age between 20 and 23 years - random salary up to 50M/year (Lionel Messi
+     * had 64.7M in 2014 :)) - random statistics - default currency - default
+     * country
+     *
      * @param position
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
-    public Player generateRandomPlayer(IPlayer.Position position) throws Exception {
+    public Player generateRandomPlayer(Position position) throws Exception {
         Player player = new Player();
         player.setFirstName(RandomStringUtils.randomAlphabetic(8));
         player.setLastName(RandomStringUtils.randomAlphabetic(8));
@@ -76,7 +74,7 @@ public class PlayerFactory {
 
         player.setCountry(Locale.CANADA_FRENCH);
         player.setPosition(position);
-        
+
         int randomSalary = randomInt.nextInt(50000000);
         player.setSalary(new BigDecimal(randomSalary));
         player.setStatistics(this.generateRandomStatistics());
@@ -90,19 +88,21 @@ public class PlayerFactory {
             throw new Exception(validation);
         }
     }
-    
+
     /**
-     * Generates Statistics with random goalsSocred and bookings between 0 and 10
+     * Generates Statistics with random goalsSocred and bookings between 0 and
+     * 10
+     *
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public Statistics generateRandomStatistics() throws Exception {
         Statistics statistics = new Statistics();
-        
+
         Random randomInt = new Random();
-        statistics.setGoalsScored(randomInt.nextInt(10));
-        statistics.setBookingsNo(randomInt.nextInt(10));
-        
+        statistics.setGoals(randomInt.nextInt(10));
+        statistics.setBookings(randomInt.nextInt(10));
+
         String validation = this.isStatisticsValid(statistics);
         if (validation.isEmpty()) {
             return statistics;
@@ -122,7 +122,9 @@ public class PlayerFactory {
             validation += String.format("Player last name '%s' is not valid: Should not be empty or contain digits", player.getLastName());
         }
 
-        if (player.getAge() < 19 || player.getAge() > 23) {
+        if (player.getDateOfBirth() == null) {
+            validation += String.format("Player date of birth is not valid");
+        } else if (player.getAge() < 19 || player.getAge() > 23) {
             validation += String.format("Player age is not valid: Should be between 20 and 23 but is %s", player.getAge());
         }
 
@@ -131,8 +133,10 @@ public class PlayerFactory {
 
         if (player.getPosition() == null)
             validation += "Player's position cannot be null";
-
-        if (player.getSalary() == null || player.getSalary().equals(BigDecimal.ZERO)) {
+        
+        if (player.getSalary() == null) {
+         validation += String.format("Player salary cannot be null");   
+        } else if (player.getSalary().equals(BigDecimal.ZERO)) {
             validation += String.format("Player salary is not valid: Should not be empty but is %s", player.getSalary().toString());
         }
 
@@ -156,11 +160,14 @@ public class PlayerFactory {
     public String isStatisticsValid(Statistics statistics) {
         String validation = "";
 
-        if (statistics.getGoalsScored() < 0)
-            validation += String.format("Statistics goalsScored '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getGoalsScored());
+        if (statistics == null)
+            return " Player's statistics should not be null";
 
-        if (statistics.getBookingsNo() < 0)
-            validation += String.format("Statistics bookings '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getBookingsNo());
+        if (statistics.getGoals() < 0)
+            validation += String.format("Statistics goalsScored '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getGoals());
+
+        if (statistics.getBookings() < 0)
+            validation += String.format("Statistics bookings '%s'is not valid: Should be numeric value equal or greater than zero", statistics.getBookings());
 
         return validation;
     }

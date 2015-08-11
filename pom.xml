@@ -98,6 +98,14 @@
             <version>2.2.4</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.4</version>
+            <type>jar</type>
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>

@@ -4,18 +4,23 @@ package com.dfostic.beans;
  * @author dfostic
  */
 
+import com.dfostic.util.Position;
 import com.dfostic.interfaces.IPlayer;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Currency;
 import java.util.Locale;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Player implements IPlayer {
 
     private String firstName;
     private String lastName;
+    
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
+    
     private Locale country;
     private Position position;
     private BigDecimal salary;
@@ -23,6 +28,7 @@ public class Player implements IPlayer {
     private Currency currency;
 
     public Player() {
+        this.statistics = new Statistics();
     }
 
     public Player(String firstName, String lastName, LocalDate dateOfBirth, Locale country, Position position, BigDecimal salary, Statistics statistics, Currency currency) {
@@ -59,6 +65,21 @@ public class Player implements IPlayer {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+    
+//    /**
+//     * Be careful, this one works only in Java 8 !!!
+//     * @param dateOfBirth 
+//     */
+//    public void setDateOfBirth(String dateOfBirth) {
+//        
+////        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+//        
+////        this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("MMM d yyyy").withLocale(Locale.ENGLISH));
+//        
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+//        this.dateOfBirth = LocalDate.parse(dateOfBirth, formatter);
+//        
+//    }
 
     public int getAge() {
         LocalDate now = LocalDate.now();

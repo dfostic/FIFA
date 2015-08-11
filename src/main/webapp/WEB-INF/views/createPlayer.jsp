@@ -40,36 +40,39 @@
         <form method="POST">
             <fieldset>
                 <legend>Create player</legend><br><br>
-                First name(*): <input type="text" name="FirstName" value=""><br><br>
-                Last name(*): <input type="text" name="LastName" value=""><br><br>
-                Date of Birth(*): <input type="text" name="dateOfBirth" value=""><br><br>
-                Country(*): <input type="text" name="country" value=""><br><br>
+                First name(*): <input type="text" name="FirstName" value="TestFirstName"><br><br>
+                Last name(*): <input type="text" name="LastName" value="TestFirstName"><br><br>
+                
+                Date of Birth(*): <input type="text" name="dateOfBirth" value="1993-01-01"><br><br>
+                <!--Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>-->                
+                <!--<input type="submit">-->
 
-                Country(*): <select>
+                Country(*): <select name="country">
                     <option value="Canada">Canada</option>
-                    <option value="usa">USA</option>
+                    <option value="USA">USA</option>
                     <option value="Russia">Russia</option>
                     <option value="Spain">Spain</option>
                 </select><br><br>
 
-                Position(*): <input type="text" name="position" value=""><br><br>
-
-                Position(*): <select>
-                    <option value="Goalkeeper">Goalkeeper</option>
-                    <option value="Defender">Defender</option>
-                    <option value="Midfielder">Midfielder</option>
-                    <option value="Forward">Forward</option>
+                Position(*): <select name="position">
+                    <option value="GOALKEEPER">Goalkeeper</option>
+                    <option value="DEFENDER">Defender</option>
+                    <option value="MIDFIELDER">Midfielder</option>
+                    <option value="FORWARD">Forward</option>
                 </select><br><br>
 
-                Annual salary(*): <input type="text" name="salary" value=""><br><br>
-                Statistics(*): <input type="text" name="goals" value="number of goals"><br><br>
-                <input type="text" name="bookings" value="number of bookings"><br><br>
+                Annual salary(*): <input type="text" name="salary" value="10000000"><br><br>
+                Statistics(*): <input type="text" name="goals" value="3"><br><br>
+                <input type="text" name="bookings" value="4"><br><br>
 
 
                 <input type="submit" value="Create" />
                 <button onclick="window.location = '/';
                         return false;">Cancel</button>
                 
+                
+                <p><b>Note:</b> Date of Birth is not supported in older Internet Explorer.</p>
+
             </fieldset>
         </form>
     </body>

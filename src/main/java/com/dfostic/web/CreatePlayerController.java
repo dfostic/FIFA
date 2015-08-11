@@ -4,9 +4,6 @@ import com.dfostic.beans.Player;
 import com.dfostic.config.FifaConfig;
 import com.dfostic.factory.PlayerFactory;
 import com.dfostic.interfaces.IPlayer;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Locale;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +27,9 @@ public class CreatePlayerController {
 
     @Autowired
     private PlayerFactory playerFactory;
+    
+    @Autowired
+    private PlayerModifierImpl playerModifier; 
 
     @RequestMapping(value = "/create", method = GET)
     public String goToCreatePlayerPage() {
@@ -38,22 +38,32 @@ public class CreatePlayerController {
 
     @RequestMapping(value = "/create", method = POST)
     public String processRegistration(@Valid Player player, Errors errors) {
+        
+        System.out.println("\n ----- Inside Create Player ----- \n");
+        
         if (errors.hasErrors()) {
             return "createPlayer";
         }
         
-        String validation = this.playerFactory.isPlayerValid(player);
+        // FOR DEBUGGING
+        int goals = player.getStatistics().getGoals();
+        System.out.println("\n Goals scored: " + goals);
+        int bookings = player.getStatistics().getBookings();
+        System.out.println("\n Bookings earned: " + bookings);
+        //
+        
+        String validation = this.playerFactory.isPlayerValid(player);        
         if (!validation.isEmpty()){
             return "createPlayer";
         }
         
-        this.player = player;
-
+        this.player = player;        
         return String.format("redirect:/player/%s/%s", player.getFirstName(), player.getLastName());
     }
 
     @RequestMapping(value = "/{firstname}/{lastname}", method = GET)
     public String showPlayerProfile(@PathVariable String firstname, @PathVariable String lastname, Model model) {
+        String test = "checkPoint";
 
         // When persistance will be implemented, to be added a method which finds player bu firstName and lastName
         model.addAttribute(this.player);
