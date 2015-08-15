@@ -3,28 +3,50 @@ package com.dfostic.beans;
 /**
  * @author dfostic
  */
-
 import com.dfostic.util.Position;
 import com.dfostic.interfaces.IPlayer;
+import com.dfostic.util.ValidAge;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Currency;
 import java.util.Locale;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 public class Player implements IPlayer {
 
+    @NotEmpty(message = "{player.firstNameEmpty}")
+    @Size(min = 2, max = 16, message = "{player.firstName}")
+    @Pattern(regexp = "[a-zA-Z\\-']+", message = "{player.firstNameDigit}")
     private String firstName;
+
+    @NotEmpty(message = "{player.lastNameEmpty}")
+    @Size(min = 2, max = 16, message = "{player.lastName}")
+    @Pattern(regexp = "[a-zA-Z\\-']+", message = "{player.lastNameDigit}")
     private String lastName;
-    
+
+    @ValidAge(min = 19, max = 23, message = "{player.age}") /* CCUSTOM MADE validator */
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
-    
+
     private Locale country;
+
     private Position position;
+
+    @NotNull(message = "{player.salaryNull}")
+    @DecimalMin(value = "25000.00", message = "{player.salarySize}")
+    @NumberFormat(style = Style.CURRENCY)
     private BigDecimal salary;
+
     private Statistics statistics;
+
     private Currency currency;
 
     public Player() {

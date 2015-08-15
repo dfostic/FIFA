@@ -1,14 +1,22 @@
-body {
-	font-family: sans-serif;
-}
-
 form {
-    display: block;
-    margin-top: 100px;
-    margin-bottom: 200px;
+    height:600px;
+    width:300px;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    margin: -200px 0 0 -200px;
 }
 
 input {
-    text-indent: 200px;
+    /*text-indent: 300px;*/
+    margin-left:50px
+        /*padding-left:5em*/
+}
+select {
+    margin-left:5em
+}
+fieldset {
+    width: 50em;
+    height: 50em;
 }
 

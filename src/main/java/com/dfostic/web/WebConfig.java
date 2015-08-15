@@ -1,28 +1,32 @@
 package com.dfostic.web;
 
-import com.dfostic.config.FifaConfig;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+import javax.inject.Inject;
+import org.hibernate.validator.HibernateValidator;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.format.FormatterRegistry;
-import org.springframework.format.datetime.DateFormatter;
-import org.springframework.format.datetime.DateFormatterRegistrar;
-import org.springframework.format.support.DefaultFormattingConversionService;
-import org.springframework.format.support.FormattingConversionService;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.dfostic.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
+    
+    @Inject SpringValidatorAdapter springValidator;
 
     @Bean
     public ViewResolver viewResolver() {
@@ -42,11 +46,39 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         super.addResourceHandlers(registry);
     }
 
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setCacheSeconds(1);
+        messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
+        messageSource.setBasename("messages/validation");
+        return messageSource;
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean localValidatorFactoryBean() throws ClassNotFoundException {
+        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+        validator.setProviderClass(HibernateValidator.class);
+        validator.setValidationMessageSource(this.messageSource());
+        return validator;
+    }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver resolver = new SessionLocaleResolver();
+        resolver.setDefaultLocale(new Locale("en"));
+        return resolver;
+    }
+
+    @Override
+    public Validator getValidator() {
+        return this.springValidator; 
+    } 
+    
 //    @Override
 //    public void addFormatters(FormatterRegistry registry) {
 //        // Add formatters and/or converters
 //    }
-    
 //    @Bean
 //    public FormattingConversionService conversionService() {
 //        // Use the DefaultFormattingConversionService but do not register defaults
@@ -74,5 +106,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //            return LocalDate.parse(s, formatter);
 //        }
 //    }
-
 }

@@ -5,6 +5,8 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html>
@@ -33,19 +35,23 @@
                 width: 50em;
                 height: 50em;
             }
+            span.error {
+                color: red;
+            }
         </style>
     </head>
 
     <body>
-        <form method="POST">
-            <fieldset>
-                <legend>Create player</legend><br><br>
-                First name(*): <input type="text" name="FirstName" value="TestFirstName"><br><br>
-                Last name(*): <input type="text" name="LastName" value="TestFirstName"><br><br>
-                
+        <sf:form method="POST" commandName="player">
+            <sf:errors path="*" element="div" cssClass="errors"></sf:errors>
+                <fieldset>
+                    <legend>Create player</legend><br><br>
+
+                First name(*): <input type="text" name="FirstName" value="AAA"><br><br>
+                Last name(*): <input type="text" name="LastName" value="BBB"><br><br>
+
                 Date of Birth(*): <input type="text" name="dateOfBirth" value="1993-01-01"><br><br>
                 <!--Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>-->                
-                <!--<input type="submit">-->
 
                 Country(*): <select name="country">
                     <option value="Canada">Canada</option>
@@ -61,20 +67,20 @@
                     <option value="FORWARD">Forward</option>
                 </select><br><br>
 
-                Annual salary(*): <input type="text" name="salary" value="10000000"><br><br>
-                Statistics(*): <input type="text" name="goals" value="3"><br><br>
-                <input type="text" name="bookings" value="4"><br><br>
+                Annual salary(*): <input type="text" name="salary" value="min 250000"><br><br>
+                Statistics(*): <input type="text" name="statistics.goals" value="0"><br><br>
+                <input type="text" name="statistics.bookings" value="0"><br><br>
 
 
                 <input type="submit" value="Create" />
                 <button onclick="window.location = '/';
                         return false;">Cancel</button>
-                
-                
+
+                <br><br><br><br><br><br><br><br><br><br><br><br>
                 <p><b>Note:</b> Date of Birth is not supported in older Internet Explorer.</p>
 
             </fieldset>
-        </form>
+        </sf:form>
     </body>
 
 </html>

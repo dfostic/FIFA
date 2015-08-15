@@ -1,7 +1,7 @@
 package com.dfostic.web;
 
 import com.dfostic.beans.Statistics;
-import com.dfostic.interfaces.PlayerModifier;
+import com.dfostic.interfaces.IPlayerModifier;
 import org.springframework.stereotype.Component;
 
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author dfostic1
  */
 @Component
-public class PlayerModifierImpl  implements PlayerModifier{
+public class PlayerModifier  implements IPlayerModifier{
     
     private Statistics statistics;
     

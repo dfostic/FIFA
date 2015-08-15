@@ -1,6 +1,6 @@
 package com.dfostic.web;
 
-import com.dfostic.interfaces.PlayerModifier;
+import com.dfostic.interfaces.IPlayerModifier;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.DeclareParents;
 
@@ -10,6 +10,6 @@ import org.aspectj.lang.annotation.DeclareParents;
 @Aspect
 public class AspectPlayerModifier {
 
-    @DeclareParents(value = "com.dfostic.beans.IPlayer+", defaultImpl = PlayerModifierImpl.class)
-    public static PlayerModifier playerModifier;
+    @DeclareParents(value = "com.dfostic.beans.IPlayer+", defaultImpl = PlayerModifier.class)
+    public static IPlayerModifier playerModifier;
 }

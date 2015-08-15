@@ -11,7 +11,7 @@ import org.springframework.core.type.filter.RegexPatternTypeFilter;
 import java.util.regex.Pattern;
 
 @Configuration
-@ComponentScan(basePackages = "com.dfostic.factory",
+@ComponentScan(basePackages = "com.dfostic",
         excludeFilters = {
             @Filter(type = FilterType.CUSTOM, value = WebPackage.class)
         })

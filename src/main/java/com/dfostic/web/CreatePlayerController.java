@@ -29,28 +29,20 @@ public class CreatePlayerController {
     private PlayerFactory playerFactory;
     
     @Autowired
-    private PlayerModifierImpl playerModifier; 
+    private PlayerModifier playerModifier; 
 
     @RequestMapping(value = "/create", method = GET)
-    public String goToCreatePlayerPage() {
+    public String goToCreatePlayerPage(Model model) {
+        model.addAttribute(new Player());
         return "createPlayer";
     }
 
     @RequestMapping(value = "/create", method = POST)
     public String processRegistration(@Valid Player player, Errors errors) {
         
-        System.out.println("\n ----- Inside Create Player ----- \n");
-        
         if (errors.hasErrors()) {
             return "createPlayer";
         }
-        
-        // FOR DEBUGGING
-        int goals = player.getStatistics().getGoals();
-        System.out.println("\n Goals scored: " + goals);
-        int bookings = player.getStatistics().getBookings();
-        System.out.println("\n Bookings earned: " + bookings);
-        //
         
         String validation = this.playerFactory.isPlayerValid(player);        
         if (!validation.isEmpty()){

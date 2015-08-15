@@ -3,7 +3,7 @@ package com.dfostic.interfaces;
 /**
  * @author dfostic1
  */
-public interface PlayerModifier {
+public interface IPlayerModifier {
     
     public void setGoals(int goals);
     

@@ -1,6 +1,9 @@
 package com.dfostic.beans;
 
 import com.dfostic.interfaces.IStatistics;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +13,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Statistics implements IStatistics{
     
+    @NotNull(message = "{statistics.goalsNull}")
+    @NotEmpty(message = "{statistics.goalsNull}")
+    @Min(0)
     private int goals;
+    
+    @NotNull(message = "{statistics.bookingsNull}")
+    @NotEmpty(message = "{statistics.bookingsNull}")
+    @Min(0)
     private int bookings;
 
     public Statistics() {
