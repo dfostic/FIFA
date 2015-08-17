@@ -19,7 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * @author dfostic1
  */
 @Controller
-@RequestMapping(value = "/trainer")
+@RequestMapping("/trainer")
 @ContextConfiguration(classes = FifaConfig.class)
 public class CreateTrainerController {
 
@@ -33,13 +33,13 @@ public class CreateTrainerController {
         this.trainerFactory = new TrainerFactory();
     }
 
-    @RequestMapping(value = "create", method = GET)
+    @RequestMapping(value = "/create", method = GET)
     public String goToCreateTrainerPage() {
         return "createTrainer";
     }
     
-    @RequestMapping(value = "create", method = POST)
-    public String trainerRegistration(@Valid Trainer trainer, Errors errors) {
+    @RequestMapping(value = "/create", method = POST)
+    public String processRegistration(@Valid Trainer trainer, Errors errors) {
 
         if (errors.hasErrors()) {
             return "createTrainer";

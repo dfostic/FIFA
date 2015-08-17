@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,13 +39,13 @@
         <fieldset>
             <legend>Create player</legend><br><br>
 
-            First name(*): <input type="text" name="FirstName" value="AAA"><br><br>
-            Last name(*): <input type="text" name="LastName" value="BBB"><br><br>
+            First name(*): <input type="text" name="FirstName" value=""><br><br>
+            Last name(*): <input type="text" name="LastName" value=""><br><br>
 
-            Date of Birth(*): <input type="text" name="dateOfBirth" value="1960-01-01"><br><br>
-            <!--Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>--> 
+            <!--Date of Birth(*): <input type="text" name="dateOfBirth" value="1960-01-01"><br><br>-->
+            Date of Birth(*): <input type="date" name="dateOfBirth"><br><br> 
 
-            Annual salary(*): <input type="text" name="salary" value="250000"><br><br>
+            Annual salary(*): <input type="text" name="salary" value="0"><br><br>
 
 
             <input type="submit" value="Create" />

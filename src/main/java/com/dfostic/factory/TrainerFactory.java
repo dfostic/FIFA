@@ -25,7 +25,7 @@ public class TrainerFactory {
 
     public static final Trainer LaurentBlanc = new Trainer("Laurent", "Blanc", LocalDate.of(1965, Month.NOVEMBER, 19), null, new BigDecimal("6000000"), Currency.getInstance(Locale.FRANCE));
     public static final Trainer LuisEnrique = new Trainer("Luis", "Enrique", LocalDate.of(1970, Month.MAY, 8), null, new BigDecimal("3400000"), Currency.getInstance(Locale.US));
-    public static final Trainer JoseMourinho = new Trainer("Jose", "Mourinho", LocalDate.of(1963, Month.JANUARY, 26), null, new BigDecimal("13200000"), Currency.getInstance(Locale.UK));
+    public static final Trainer JoseMourinho = new Trainer("Jose", "Mourinho", LocalDate.of(1963, Month.JANUARY, 26), null, new BigDecimal("19500000"), Currency.getInstance(Locale.UK));
     public static final Trainer RafaelBenitez = new Trainer("Rafael", "Benitez", LocalDate.of(1960, Month.APRIL, 16), null, new BigDecimal("3500000"), Currency.getInstance(new Locale("es", "ES")));
 
     public TrainerFactory() {

@@ -66,7 +66,7 @@ public class CreatePlayerControllerTest {
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         mockMvc.perform(post("/player/create")
-                .param("lastName", "A")
+                .param("firstName", "A")
                 .param("lastName", "Messi")
                 .param("dateOfBirth", "1993-01-01")
                 .param("country", "Argentina")
@@ -74,7 +74,7 @@ public class CreatePlayerControllerTest {
                 .param("salary", "64700000")
                 .param("goals", "70")
                 .param("bookings", "7"))
-                .andExpect(model().errorCount(2))
+                .andExpect(model().errorCount(1))
                 .andExpect(model().attributeHasFieldErrors("player", "firstName"));
     }
 
@@ -83,7 +83,7 @@ public class CreatePlayerControllerTest {
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         mockMvc.perform(post("/player/create")
-                .param("lastName", "ABCDEFGHIGKLMNOPQ") /* 17 chars */
+                .param("firstName", "ABCDEFGHIGKLMNOPQ") /* 17 chars */
                 .param("lastName", "Messi")
                 .param("dateOfBirth", "1993-01-01")
                 .param("country", "Argentina")
@@ -91,7 +91,7 @@ public class CreatePlayerControllerTest {
                 .param("salary", "64700000")
                 .param("goals", "70")
                 .param("bookings", "7"))
-                .andExpect(model().errorCount(3))
+                .andExpect(model().errorCount(1))
                 .andExpect(model().attributeHasFieldErrors("player", "firstName"));
     }
 
@@ -100,7 +100,7 @@ public class CreatePlayerControllerTest {
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         mockMvc.perform(post("/player/create")
-                .param("lastName", "Lionel2") /* digit */
+                .param("firstName", "Lionel2") /* digit */
                 .param("lastName", "Messi")
                 .param("dateOfBirth", "1993-01-01")
                 .param("country", "Argentina")
@@ -108,7 +108,7 @@ public class CreatePlayerControllerTest {
                 .param("salary", "64700000")
                 .param("goals", "70")
                 .param("bookings", "7"))
-                .andExpect(model().errorCount(2))
+                .andExpect(model().errorCount(1))
                 .andExpect(model().attributeHasFieldErrors("player", "firstName"));
     }
 

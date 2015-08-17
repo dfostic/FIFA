@@ -25,9 +25,9 @@ public class Trainer implements ITrainer {
     @Pattern(regexp = "[a-zA-Z\\-']+", message = "{trainer.firstNameDigit}")
     private String firstName;
 
-    @NotEmpty(message = "{trainer.firstNameEmpty}")
-    @Size(min = 2, max = 16, message = "{trainer.firstName}")
-    @Pattern(regexp = "[a-zA-Z\\-']+", message = "{trainer.firstNameDigit}")
+    @NotEmpty(message = "{trainer.lastNameEmpty}")
+    @Size(min = 2, max = 16, message = "{trainer.lastName}")
+    @Pattern(regexp = "[a-zA-Z\\-']+", message = "{trainer.lastNameDigit}")
     private String lastName;
 
     @ValidAge(min = 40, message = "{trainer.age}") /* CUSTOM MADE validator */
