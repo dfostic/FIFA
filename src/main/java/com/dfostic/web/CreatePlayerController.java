@@ -26,10 +26,15 @@ public class CreatePlayerController {
     private IPlayer player;
 
     @Autowired
-    private PlayerFactory playerFactory;
+    private final PlayerFactory playerFactory;
     
-    @Autowired
-    private PlayerModifier playerModifier; 
+    /* Workaround for unit tests*/
+    public CreatePlayerController() {
+        this.playerFactory = new PlayerFactory();
+    }
+    
+//    @Autowired
+//    private PlayerModifier playerModifier; 
 
     @RequestMapping(value = "/create", method = GET)
     public String goToCreatePlayerPage(Model model) {
@@ -55,7 +60,6 @@ public class CreatePlayerController {
 
     @RequestMapping(value = "/{firstname}/{lastname}", method = GET)
     public String showPlayerProfile(@PathVariable String firstname, @PathVariable String lastname, Model model) {
-        String test = "checkPoint";
 
         // When persistance will be implemented, to be added a method which finds player bu firstName and lastName
         model.addAttribute(this.player);

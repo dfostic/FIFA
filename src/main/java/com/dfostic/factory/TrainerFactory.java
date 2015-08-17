@@ -79,7 +79,7 @@ public class TrainerFactory {
      * @param trainer
      * @return
      */
-    private String isTrainerValid(Trainer trainer) {
+    public String isTrainerValid(Trainer trainer) {
         String validation = "";
         if (trainer.getFirstName() == null || trainer.getFirstName().isEmpty()) {
             validation += String.format("Trainer first name '%s' is not valid: Should not be empty", trainer.getFirstName());

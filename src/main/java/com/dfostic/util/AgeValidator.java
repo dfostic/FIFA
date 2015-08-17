@@ -19,14 +19,14 @@ public class AgeValidator implements ConstraintValidator<ValidAge, LocalDate> {
     }
 
     public boolean isValid(LocalDate value, ConstraintValidatorContext context) {
+        if (value == null)
+            return false;
+        
         LocalDate now = LocalDate.now();
         Period period = Period.between(value, now);
         int age = period.getYears();
 
-        if (age < minAge || age > maxAge)
-            return false;
-        else
-            return true;
+        return !(age < minAge || age > maxAge);
     }
 
 }

@@ -12,17 +12,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>Create Player</title>
+        <title>Create Player</title>   
         <style>
             form {
-                height:400px;
-                width:400px;
-                position: absolute;
+                display: inline-block;
+                height: 400px;
+                width: 400px;
+                position: relative;
+                top: 10%;
                 left: 30%;
-                top: 30%;
-                margin: -200px 0 0 -200px;
+                /*margin: -200px 0 0 -200px;*/
             }
-
             input {
                 /*text-indent: 300px;*/
                 margin-left:50px
@@ -47,39 +47,39 @@
                 <fieldset>
                     <legend>Create player</legend><br><br>
 
-                First name(*): <input type="text" name="FirstName" value="AAA"><br><br>
-                Last name(*): <input type="text" name="LastName" value="BBB"><br><br>
+                    First name(*): <input type="text" name="FirstName" value=""><br><br>
+                    Last name(*): <input type="text" name="LastName" value=""><br><br>
 
-                Date of Birth(*): <input type="text" name="dateOfBirth" value="1993-01-01"><br><br>
-                <!--Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>-->                
+                    <!--Date of Birth(*): <input type="text" name="dateOfBirth" value="1993-01-01"><br><br>-->
+                    Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>                
 
-                Country(*): <select name="country">
-                    <option value="Canada">Canada</option>
-                    <option value="USA">USA</option>
-                    <option value="Russia">Russia</option>
-                    <option value="Spain">Spain</option>
-                </select><br><br>
+                    Country(*): <select name="country">
+                        <option value="Canada">Canada</option>
+                        <option value="USA">USA</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Spain">Spain</option>
+                    </select><br><br>
 
-                Position(*): <select name="position">
-                    <option value="GOALKEEPER">Goalkeeper</option>
-                    <option value="DEFENDER">Defender</option>
-                    <option value="MIDFIELDER">Midfielder</option>
-                    <option value="FORWARD">Forward</option>
-                </select><br><br>
+                    Position(*): <select name="position">
+                        <option value="GOALKEEPER">Goalkeeper</option>
+                        <option value="DEFENDER">Defender</option>
+                        <option value="MIDFIELDER">Midfielder</option>
+                        <option value="FORWARD">Forward</option>
+                    </select><br><br>
 
-                Annual salary(*): <input type="text" name="salary" value="min 250000"><br><br>
-                Statistics(*): <input type="text" name="statistics.goals" value="0"><br><br>
-                <input type="text" name="statistics.bookings" value="0"><br><br>
+                    Annual salary(*): <input type="text" name="salary" value="0"><br><br>
+                    Statistics(*): <input type="text" name="statistics.goals" value="0" size="3"> goals <br><br>
+                    <input type="text" name="statistics.bookings" value="0" size="3"> bookings<br><br>
 
 
-                <input type="submit" value="Create" />
-                <button onclick="window.location = '/';
+                    <input type="submit" value="Create" />
+                    <button onclick="window.location = '/';
                         return false;">Cancel</button>
 
-                <br><br><br><br><br><br><br><br><br><br><br><br>
-                <p><b>Note:</b> Date of Birth is not supported in older Internet Explorer.</p>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <p><b>Note:</b> Date of Birth is not supported in older Internet Explorer.</p>
 
-            </fieldset>
+                </fieldset>
         </sf:form>
     </body>
 

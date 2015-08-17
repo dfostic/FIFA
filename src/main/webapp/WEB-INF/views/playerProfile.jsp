@@ -25,12 +25,15 @@
                 Position(*): <c:out value="${player.position}" /><br><br>
                 Annual salary(*): <c:out value="${player.salary}" /><br><br>
                 Stats(*): <c:out value="${player.statistics.goals} goals"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                           <c:out value="${player.statistics.bookings}"/> <br><br>
+                           <c:out value="${player.statistics.bookings} bookings"/> <br><br>
                            
                 <!--<button type="button" onclick="/">Return</button>-->
                 
+                <button onclick="window.location = '/player/create';
+                        return false;">Return</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                
                 <button onclick="window.location = '/';
-                        return false;">Return</button>
+                        return false;">Home</button>
             </fieldset>
         </form>
     </body>

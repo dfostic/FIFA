@@ -32,7 +32,8 @@ public class Player implements IPlayer {
     @Pattern(regexp = "[a-zA-Z\\-']+", message = "{player.lastNameDigit}")
     private String lastName;
 
-    @ValidAge(min = 19, max = 23, message = "{player.age}") /* CCUSTOM MADE validator */
+    @NotNull(message = "{player.ageNull}")
+    @ValidAge(min = 19, max = 23, message = "{player.age}") /* CUSTOM MADE validator */
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
 

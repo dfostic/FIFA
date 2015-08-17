@@ -4,20 +4,43 @@ package com.dfostic.beans;
  * @author dfostic
  */
 import com.dfostic.interfaces.ITrainer;
+import com.dfostic.util.ValidAge;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Currency;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 public class Trainer implements ITrainer {
 
+    @NotEmpty(message = "{trainer.firstNameEmpty}")
+    @Size(min = 2, max = 16, message = "{trainer.firstName}")
+    @Pattern(regexp = "[a-zA-Z\\-']+", message = "{trainer.firstNameDigit}")
     private String firstName;
+
+    @NotEmpty(message = "{trainer.firstNameEmpty}")
+    @Size(min = 2, max = 16, message = "{trainer.firstName}")
+    @Pattern(regexp = "[a-zA-Z\\-']+", message = "{trainer.firstNameDigit}")
     private String lastName;
+
+    @ValidAge(min = 40, message = "{trainer.age}") /* CUSTOM MADE validator */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
 
-    private ArrayList<Team> previousTeams;
+    @NotNull(message = "{trainer.salaryNull}")
+    @DecimalMin(value = "25000.00", message = "{trainer.salarySize}")
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private BigDecimal salary;
+
+    private ArrayList<Team> previousTeams;
+
     private Currency currency;
 
     public Trainer() {
