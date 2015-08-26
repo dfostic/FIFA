@@ -1,9 +1,12 @@
 package com.dfostic.web;
 
+import com.dfostic.data.PlayerRepository;
+import com.dfostic.factory.PlayerFactory;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -17,9 +20,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  */
 @RunWith(MockitoJUnitRunner.class)
 public class CreatePlayerControllerTest {
+    
+    private final CreatePlayerController controller = new CreatePlayerController(new PlayerFactory());
 
-    @InjectMocks
-    private CreatePlayerController controller;
 
     @Test
     public void createPlayerPage() throws Exception {

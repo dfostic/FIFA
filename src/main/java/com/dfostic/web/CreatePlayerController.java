@@ -2,6 +2,7 @@ package com.dfostic.web;
 
 import com.dfostic.beans.Player;
 import com.dfostic.config.FifaConfig;
+import com.dfostic.data.PlayerRepository;
 import com.dfostic.factory.PlayerFactory;
 import com.dfostic.interfaces.IPlayer;
 import javax.validation.Valid;
@@ -25,17 +26,24 @@ public class CreatePlayerController {
 
     private IPlayer player;
 
-    @Autowired
+    
     private final PlayerFactory playerFactory;
-    
-    /* Workaround for unit tests*/
-    public CreatePlayerController() {
-        this.playerFactory = new PlayerFactory();
-    }
-    
-//    @Autowired
-//    private PlayerModifier playerModifier; 
 
+    @Autowired
+    public CreatePlayerController(PlayerFactory playerFactory) {
+        this.playerFactory = playerFactory;
+    }
+
+//    @Autowired
+//    private final PlayerFactory playerFactory;
+//
+////    @Autowired
+////    private PlayerRepository playerRepository;
+//
+//    /* Workaround for unit tests*/
+//    public CreatePlayerController() {
+//        this.playerFactory = new PlayerFactory();
+//    }
     @RequestMapping(value = "/create", method = GET)
     public String goToCreatePlayerPage(Model model) {
         model.addAttribute(new Player());
@@ -44,17 +52,18 @@ public class CreatePlayerController {
 
     @RequestMapping(value = "/create", method = POST)
     public String processRegistration(@Valid Player player, Errors errors) {
-        
+
         if (errors.hasErrors()) {
             return "createPlayer";
         }
-        
-        String validation = this.playerFactory.isPlayerValid(player);        
-        if (!validation.isEmpty()){
+
+        String validation = this.playerFactory.isPlayerValid(player);
+        if (!validation.isEmpty()) {
             return "createPlayer";
         }
-        
-        this.player = player;        
+
+//        this.playerRepository.save(player);
+        this.player = player;
         return String.format("redirect:/player/%s/%s", player.getFirstName(), player.getLastName());
     }
 
@@ -62,10 +71,13 @@ public class CreatePlayerController {
     public String showPlayerProfile(@PathVariable String firstname, @PathVariable String lastname, Model model) {
 
         // When persistance will be implemented, to be added a method which finds player bu firstName and lastName
+//        Player requestPlayer = this.playerRepository.findByLastName(lastname).get(0);
         model.addAttribute(this.player);
+
+//        model.addAttribute(this.player);
         return "playerProfile";
     }
-    
+
     public String cancelPlayer() {
         return "/";
     }

@@ -9,9 +9,11 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.core.type.filter.RegexPatternTypeFilter;
 
 import java.util.regex.Pattern;
+import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan(basePackages = "com.dfostic",
+@Import(SpringDataConfig.class)
+@ComponentScan(basePackages = {"com.dfostic"},
         excludeFilters = {
             @Filter(type = FilterType.CUSTOM, value = WebPackage.class)
         })

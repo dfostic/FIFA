@@ -5,7 +5,7 @@ package com.dfostic.interfaces;
  */
 public interface IStatistics {
 
-    public static int goals = 0;
-    public static int bookings = 0;
+//    public static int goals = 0;
+//    public static int bookings = 0;
 
 }
