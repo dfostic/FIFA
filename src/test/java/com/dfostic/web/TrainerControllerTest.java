@@ -16,10 +16,10 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  * @author dfostic
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CreateTrainerControllerTest {
+public class TrainerControllerTest {
     
     @InjectMocks
-    private CreateTrainerController controller;
+    private TrainerController controller;
     
     @Test
     public void createTrainerPage() throws Exception {

@@ -13,13 +13,11 @@ import java.time.Period;
 import java.util.Currency;
 import java.util.Locale;
 import javax.persistence.Column;
-import javax.persistence.Converter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -31,8 +29,7 @@ import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
-@Table(name = "player")
-public class Player implements IPlayer, Serializable {
+public class Player implements IPlayer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,13 +41,11 @@ public class Player implements IPlayer, Serializable {
     @Pattern(regexp = "[a-zA-Z\\-']+", message = "{player.firstNameDigit}")
     private String firstName;
 
-    @Column(name = "lastname")
     @NotEmpty(message = "{player.lastNameEmpty}")
     @Size(min = 2, max = 16, message = "{player.lastName}")
     @Pattern(regexp = "[a-zA-Z\\-']+", message = "{player.lastNameDigit}")
     private String lastName;
 
-    @Column(name = "dateofbirth")
     @NotNull(message = "{player.ageNull}")
     @ValidAge(min = 19, max = 23, message = "{player.age}") /* CUSTOM MADE validator */
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

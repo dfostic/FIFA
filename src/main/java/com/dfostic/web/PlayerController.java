@@ -22,15 +22,14 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 @RequestMapping("/player")
 @ContextConfiguration(classes = FifaConfig.class)
-public class CreatePlayerController {
+public class PlayerController {
 
     private IPlayer player;
-
     
     private final PlayerFactory playerFactory;
 
     @Autowired
-    public CreatePlayerController(PlayerFactory playerFactory) {
+    public PlayerController(PlayerFactory playerFactory) {
         this.playerFactory = playerFactory;
     }
 
@@ -41,7 +40,7 @@ public class CreatePlayerController {
 ////    private PlayerRepository playerRepository;
 //
 //    /* Workaround for unit tests*/
-//    public CreatePlayerController() {
+//    public PlayerController() {
 //        this.playerFactory = new PlayerFactory();
 //    }
     @RequestMapping(value = "/create", method = GET)

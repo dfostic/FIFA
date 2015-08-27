@@ -19,9 +19,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  * @author dfostic
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CreatePlayerControllerTest {
+public class PlayerControllerTest {
     
-    private final CreatePlayerController controller = new CreatePlayerController(new PlayerFactory());
+    private final PlayerController controller = new PlayerController(new PlayerFactory());
 
 
     @Test

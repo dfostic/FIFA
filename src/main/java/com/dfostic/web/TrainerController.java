@@ -21,7 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 @RequestMapping("/trainer")
 @ContextConfiguration(classes = FifaConfig.class)
-public class CreateTrainerController {
+public class TrainerController {
 
     private ITrainer trainer;
 
@@ -29,7 +29,7 @@ public class CreateTrainerController {
     private final TrainerFactory trainerFactory;
 
     /* Workaround for unit tests*/
-    public CreateTrainerController() {
+    public TrainerController() {
         this.trainerFactory = new TrainerFactory();
     }
 
