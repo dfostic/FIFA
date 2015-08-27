@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author DFostic1
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = RootConfig.class)
@@ -31,25 +30,33 @@ public class PlayerRepositoryTest {
     @Autowired
     private PlayerFactory playerFactory;
 
-    /**
-     * Tests inserting a user and asserts it can be loaded again.
-     * @throws java.lang.Exception
-     */
+    @Test
+    public void testAbc() {
+        assertEquals(5, 5);
+    }
+
     @Test
     public void testSavePlayer() throws Exception {
-
         Player player = playerFactory.generateRandomPlayer(Position.DEFENDER);
-        
-        System.out.println("\n\n ------------------------------------------  before save ------------------------------------------\n\n");
-
-        player = playerRepository.save(player);
+        playerRepository.save(player);
 
         assertEquals(player, playerRepository.findByLastName(player.getLastName()).get(0));
     }
 
     @Test
-    public void testAbc() {
-        assertEquals(5, 5);
+    public void testSaveMultiplePlayers() throws Exception {
+        Player player1 = playerFactory.generateRandomPlayer(Position.DEFENDER);
+        playerRepository.save(player1);
+        
+        Player player2 = playerFactory.generateRandomPlayer(Position.DEFENDER);
+        playerRepository.save(player2);
+        
+        Player player3 = playerFactory.generateRandomPlayer(Position.DEFENDER);
+        playerRepository.save(player3);
+
+        assertEquals(player3, playerRepository.findByLastName(player3.getLastName()).get(0));
+        assertEquals(player2, playerRepository.findByLastName(player2.getLastName()).get(0));
+        assertEquals(player1, playerRepository.findByLastName(player1.getLastName()).get(0));
     }
 
 }
