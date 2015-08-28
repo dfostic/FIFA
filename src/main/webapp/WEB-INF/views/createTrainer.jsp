@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="/resources/SoccerBall.ico" rel="icon" type="image/x-icon" />
         <title>Create Trainer</title>   
         <style>
             form {

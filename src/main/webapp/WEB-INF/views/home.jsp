@@ -6,7 +6,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>footballapp</title>
+        <link href="/resources/SoccerBall.ico" rel="icon" type="image/x-icon" />
+        <title>--- FIFA ---</title>
 
         <style>
             form {
@@ -28,6 +29,6 @@
             &nbsp; &nbsp; &nbsp;        
             <button onclick="window.location = '/trainer/create';
                     return false;">Create Trainer</button></pre>
-    </form>
-</body>
+        </form>
+    </body>
 </html>

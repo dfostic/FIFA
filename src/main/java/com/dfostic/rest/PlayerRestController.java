@@ -4,7 +4,9 @@ import com.dfostic.beans.Player;
 import com.dfostic.data.PlayerRepository;
 import com.dfostic.factory.PlayerFactory;
 import java.util.List;
+import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +31,22 @@ public class PlayerRestController {
         this.playerFactory = playerFactory;
         this.playerRepository = playerRepository;
     }
-    
-    @RequestMapping(value="/player/getall", method=RequestMethod.GET, produces="application/json")
-    public @ResponseBody List<Player> spittles(
+
+//    @RequestMapping(value="/player/getall", method=RequestMethod.GET, produces={"application/xml","application/json"})
+    @RequestMapping(value = "/player/getall", method = RequestMethod.GET, produces={"application/json","application/xml"})
+    public @ResponseBody
+    List<Player> players(
             @RequestBody
-            @RequestParam(value="count", defaultValue="20") int count)
-    {
+            @RequestParam(value = "count", defaultValue = "20") int count) {
+        return playerRepository.findAll();
+    }
+
+    @Produces({"application/xml","application/json"})
+    @RequestMapping(value = "/player/all", method = RequestMethod.GET, headers = {"ACCEPT=*/*"})
+    public @ResponseBody
+    List<Player> playersOther(
+            @RequestBody
+            @RequestParam(value = "count", defaultValue = "20") int count) {
         return playerRepository.findAll();
     }
 }
