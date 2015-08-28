@@ -23,10 +23,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.dfostic.web")
+@ComponentScan({"com.dfostic.web", "com.dfostic.rest"})
 public class WebConfig extends WebMvcConfigurerAdapter {
-    
-    @Inject SpringValidatorAdapter springValidator;
+
+    @Inject
+    SpringValidatorAdapter springValidator;
 
     @Bean
     public ViewResolver viewResolver() {
@@ -72,38 +73,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public Validator getValidator() {
-        return this.springValidator; 
-    } 
-    
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        // Add formatters and/or converters
-//    }
-//    @Bean
-//    public FormattingConversionService conversionService() {
-//        // Use the DefaultFormattingConversionService but do not register defaults
-//        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
-//
-//        // Ensure @NumberFormat is still supported
-//        //conversionService.addFormatterForFieldAnnotation(new NumberFormatAnnotationFormatterFactory());
-//        conversionService.addConverter(new WebConfig.StringToLocalDateConverter());
-//        
-//        // Register date conversion with a specific global format
-//        DateFormatterRegistrar registrar = new DateFormatterRegistrar();
-//        registrar.setFormatter(new DateFormatter("yyyy-MM-dd"));
-//        registrar.registerFormatters(conversionService);
-//
-//        return conversionService;
-//    }
-//
-//    private static class StringToLocalDateConverter implements Converter<String, LocalDate> {
-//
-//        public StringToLocalDateConverter() {
-//        }
-//
-//        public LocalDate convert(String s) {
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-//            return LocalDate.parse(s, formatter);
-//        }
-//    }
+        return this.springValidator;
+    }
 }
