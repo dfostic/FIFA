@@ -34,7 +34,9 @@
                         return false;">Return</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 
                 <button onclick="window.location = '/';
-                        return false;">Home</button>
+                        return false;">Home</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button onclick="window.location = '/rest/player/id/${player.playerId}';
+                        return false;">view REST</button>&nbsp;&nbsp;&nbsp;&nbsp;
             </fieldset>
         </form>
     </body>

@@ -1,6 +1,7 @@
 package com.dfostic.beans;
 
 import com.dfostic.interfaces.IStatistics;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ public class Statistics implements IStatistics, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "statisticsrowid")
+    @JsonIgnore
     private long statisticsId;
 
     @NotNull(message = "{statistics.goalsNull}")

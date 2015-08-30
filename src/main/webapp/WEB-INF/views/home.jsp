@@ -24,9 +24,9 @@
     <body>
         <form>
             <button onclick="window.location = '/player/create';
-                    return false;">Create Player</button>&nbsp; &nbsp; &nbsp;
+                    return false;">Create Player</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            &nbsp; &nbsp; &nbsp;        
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
             <button onclick="window.location = '/trainer/create';
                     return false;">Create Trainer</button></pre>
         </form>

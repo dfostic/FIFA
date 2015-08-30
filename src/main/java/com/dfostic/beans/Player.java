@@ -5,8 +5,12 @@ package com.dfostic.beans;
  */
 import com.dfostic.util.Position;
 import com.dfostic.interfaces.IPlayer;
+import com.dfostic.util.JsonDateDeserializer;
+import com.dfostic.util.JsonDateSerializer;
 import com.dfostic.util.ValidAge;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
@@ -49,6 +53,8 @@ public class Player implements IPlayer {
     @NotNull(message = "{player.ageNull}")
     @ValidAge(min = 19, max = 23, message = "{player.age}") /* CUSTOM MADE validator */
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    @JsonSerialize(using = JsonDateSerializer.class)
     private LocalDate dateOfBirth;
 
     private Locale country;
@@ -65,6 +71,7 @@ public class Player implements IPlayer {
     private Statistics statistics;
 
     @Transient
+    @JsonIgnore
     private Currency currency;
 
     public Player() {

@@ -48,11 +48,11 @@
                 <fieldset>
                     <legend>Create player</legend><br><br>
 
-                    First name(*): <input type="text" name="FirstName" value=""><br><br>
-                    Last name(*): <input type="text" name="LastName" value=""><br><br>
+                    First name(*): <input type="text" name="FirstName" value="FirstName"><br><br>
+                    Last name(*): <input type="text" name="LastName" value="LastName"><br><br>
 
-                    <!--Date of Birth(*): <input type="text" name="dateOfBirth" value="1993-01-01"><br><br>-->
-                    Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>                
+                    Date of Birth(*): <input type="text" name="dateOfBirth" value="1993-01-01"><br><br>
+                    <!--Date of Birth(*): <input type="date" name="dateOfBirth"><br><br>-->                
 
                     Country(*): <select name="country">
                         <option value="Canada">Canada</option>
@@ -68,7 +68,7 @@
                         <option value="FORWARD">Forward</option>
                     </select><br><br>
 
-                    Annual salary(*): <input type="text" name="salary" value="0"><br><br>
+                    Annual salary(*): <input type="text" name="salary" value="100000"><br><br>
                     Statistics(*): <input type="text" name="statistics.goals" value="0" size="3"> goals <br><br>
                     <input type="text" name="statistics.bookings" value="0" size="3"> bookings<br><br>
 
