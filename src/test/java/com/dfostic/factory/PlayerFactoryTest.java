@@ -1,6 +1,5 @@
 package com.dfostic.factory;
 
-import com.dfostic.interfaces.IPlayer;
 import com.dfostic.beans.Player;
 import com.dfostic.beans.Statistics;
 import com.dfostic.config.FifaConfig;

@@ -20,9 +20,9 @@ public class PlayerFactory {
 
     private final Currency defaultCurrency = Currency.getInstance(Locale.US);
 
-    public static final Player NicolasDouchez = new Player("Nicolas", "Douchez", LocalDate.of(1980, Month.APRIL, 22), Locale.FRANCE, Position.GOALKEEPER, new BigDecimal("1440000"), new Statistics(), Currency.getInstance(Locale.FRANCE));
-    public static final Player ThiagoSilva = new Player("Thiago", "Silva", LocalDate.of(1984, Month.SEPTEMBER, 22), new Locale("pt_BR", "Brazil"), Position.DEFENDER, new BigDecimal("12000000"), new Statistics(4, 1), Currency.getInstance(Locale.FRANCE));
-    public static final Player BenjaminStambouli = new Player("Benjamin", "Stambouli", LocalDate.of(1990, Month.AUGUST, 13), Locale.FRANCE, Position.MIDFIELDER, new BigDecimal("1711667"), new Statistics(5, 2), Currency.getInstance(Locale.FRANCE));
+    public static final Player NicolasDouchez = new Player("Nicolas", "Douchez", LocalDate.of(1996, Month.APRIL, 22), Locale.FRANCE, Position.GOALKEEPER, new BigDecimal("1440000"), new Statistics(), Currency.getInstance(Locale.FRANCE));
+    public static final Player ThiagoSilva = new Player("Thiago", "Silva", LocalDate.of(1995, Month.SEPTEMBER, 22), new Locale("pt_BR", "Brazil"), Position.DEFENDER, new BigDecimal("12000000"), new Statistics(4, 1), Currency.getInstance(Locale.FRANCE));
+    public static final Player BenjaminStambouli = new Player("Benjamin", "Stambouli", LocalDate.of(1994, Month.AUGUST, 13), Locale.FRANCE, Position.MIDFIELDER, new BigDecimal("1711667"), new Statistics(5, 2), Currency.getInstance(Locale.FRANCE));
 
     public PlayerFactory() {
 

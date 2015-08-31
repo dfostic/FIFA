@@ -11,6 +11,7 @@ import com.dfostic.util.ValidAge;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
@@ -33,7 +34,7 @@ import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
-public class Player implements IPlayer {
+public class Player implements IPlayer, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

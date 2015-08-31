@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
-import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;

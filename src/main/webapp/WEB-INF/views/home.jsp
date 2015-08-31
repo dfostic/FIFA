@@ -22,13 +22,30 @@
     </head>
 
     <body>
-        <form>
-            <button onclick="window.location = '/player/create';
-                    return false;">Create Player</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-            <button onclick="window.location = '/trainer/create';
+        <form>
+            <button style="color: purple; font-weight: bold" onclick="window.location = '/player/create';
+                    return false;">Create Player</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button style="color: purple; font-weight: bold" onclick="window.location = '/trainer/create';
                     return false;">Create Trainer</button></pre>
-        </form>
-    </body>
+
+        <br/><br/>
+        <p>Player's REST implementation</p>
+        <table>
+            <c:forEach items="${playerList}" var="player">
+                <br/><br/>
+                <button style="color:blue; font-weight: bold" onclick="window.location = '/rest/player/id/${player.playerId}';
+                        return false;">${player.lastName} ${player.firstName}</button>               
+
+            </c:forEach>
+        </table>
+
+        <br><br><br><br>
+        <button style="color: green; font-weight: bold" onclick="window.location = '/rest/player/all';
+                return false;">View all players REST</button></pre>
+    <br/>
+    <p>Due to lack of time, could not do it looking better</p>
+</form>
+</body>
 </html>

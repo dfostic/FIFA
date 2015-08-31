@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -38,33 +40,24 @@ public class PlayerRestController {
         this.playerRepository = playerRepository;
     }
 
-//    @RequestMapping(value="/getall", method=RequestMethod.GET, produces={"application/xml","application/json"})
-    @RequestMapping(value = "/getall", method = RequestMethod.GET, produces = "application/json")
+//    @RequestMapping(value="/getall", method=RequestMethod.GET, headers = {"application/json","application/xml"}, produces = {"application/json","application/xml"})
+    @RequestMapping(value = "/getall", method = RequestMethod.GET, produces={"application/xml", "application/json"})
+    @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Player> players(
-            @RequestBody
+    List<Player> players(@RequestBody
             @RequestParam(value = "count", defaultValue = "20") int count) {
         return playerRepository.findAll();
     }
-
-//    @Produces({"application/json", "application/xml"})
-//    @RequestMapping(value = "/all", method = RequestMethod.GET, headers = {"ACCEPT=*/*"})
-//    public @ResponseBody
-//    List<Player> playersOther(
-//            @RequestBody
-//            @RequestParam(value = "count", defaultValue = "20") int count) {
-//        return playerRepository.findAll();
-//    }
-
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ModelAndView viewAllPlayers() throws IOException {        
-        ObjectMapper mapper = new ObjectMapper();        
+    public ModelAndView viewAllPlayers() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Player> allPlayers = this.playerRepository.findAll();
-        
+
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String playerString = ow.writeValueAsString(allPlayers);
 
-        Object json = mapper.readValue(playerString, Object.class);        
+        Object json = mapper.readValue(playerString, Object.class);
 
         ModelAndView modelandView = new ModelAndView("viewPlayers");
 
@@ -72,16 +65,16 @@ public class PlayerRestController {
 
         return modelandView;
     }
-    
+
     @RequestMapping(value = "/lastName/{lastName}", method = RequestMethod.GET)
-    public ModelAndView viewPlayer(@PathVariable String lastName) throws IOException {        
-        ObjectMapper mapper = new ObjectMapper();        
+    public ModelAndView viewPlayer(@PathVariable String lastName) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Player> players = this.playerRepository.findByLastName(lastName);
-        
+
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String playerString = ow.writeValueAsString(players);
 
-        Object json = mapper.readValue(playerString, Object.class);        
+        Object json = mapper.readValue(playerString, Object.class);
 
         ModelAndView modelandView = new ModelAndView("viewPlayers");
 
@@ -89,18 +82,18 @@ public class PlayerRestController {
 
         return modelandView;
     }
-    
+
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
     public ModelAndView viewPlayerById(@PathVariable long id) throws IOException {
-        
+
 //        long longId = Long.parseLong(id);
-        ObjectMapper mapper = new ObjectMapper();        
+        ObjectMapper mapper = new ObjectMapper();
         Player player = this.playerRepository.findOne(id);
-        
+
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String playerString = ow.writeValueAsString(player);
 
-        Object json = mapper.readValue(playerString, Object.class);        
+        Object json = mapper.readValue(playerString, Object.class);
 
         ModelAndView modelandView = new ModelAndView("viewPlayers");
 
@@ -108,6 +101,5 @@ public class PlayerRestController {
 
         return modelandView;
     }
-    
 
 }

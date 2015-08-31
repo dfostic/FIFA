@@ -2,15 +2,9 @@ package com.dfostic.factory;
 
 import com.dfostic.beans.Player;
 import com.dfostic.beans.Team;
-import com.dfostic.beans.Trainer;
 import com.dfostic.config.FifaConfig;
-import com.dfostic.interfaces.IPlayer;
 import com.dfostic.util.Position;
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
